@@ -74,3 +74,24 @@ Doubly Linked Lists
 - hold a reference to the next node and previous node  
 - pros : can be traversed backwards  
 
+## What is a Stack?  
+A stack is a one-ended linear data structure  
+which models a real world stack  
+by having 2 primary operations, push and pop.  
+(LIFO)
+
+When and where is a stack used?  
+- undo mechanism  
+- compiler syntax checking  
+- DFS  
+- tower of hanoi  
+
+## What is a Queue?  
+A queue is a linear data structure  
+which models a real world queue  
+by having 2 primary operations, enqueue and dequeue.  
+
+When and where is a queue used?  
+- recently added elements  
+- serve request management  
+- BFS  
