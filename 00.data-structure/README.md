@@ -52,3 +52,25 @@ When and Where is a static Array used?
 ## What is a dynamic Array?
 A dynamic array can grow and shrink in size  
 
+## What is a Linked List?  
+A linked list is a sequential list of nodes  
+that hold data which point to other nodes containing data.  
+
+Where are linked lists used?  
+- List, Queue and Stack implementation  
+- circular lists
+- Hashtable implementation  
+
+Terminology
+- Head : The first node in a linked list  
+- Tail : The last node in a linked list  
+- Pointer : Reference to another node  
+- Node : An object containing data and pointer  
+
+Singly Linked Lists  
+- hold a reference to the next node  
+
+Doubly Linked Lists  
+- hold a reference to the next node and previous node  
+- pros : can be traversed backwards  
+
