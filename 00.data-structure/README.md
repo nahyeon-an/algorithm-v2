@@ -95,3 +95,51 @@ When and where is a queue used?
 - recently added elements  
 - serve request management  
 - BFS  
+
+## What is a Priority Queue?  
+A priority queue is an Abstract Data Type  
+that operates similar to a queue  
+except that each element has a certain priority.  
+The priority determines the order in which elements are removed from the Priority Queue.  
+Priority queues only support comparable data.  
+
+## What is a Heap?  
+A heap is a tree based data structure  
+that satisfies the heap invariant (heap property)  
+- max / min heap  
+
+When and where is a priority queue used?  
+- dijkstra's shortest path algorithm  
+- A* BFS  
+- MST algorithms  
+
+Binary Heap  
+- construction : O(n)  
+
+### Turning Min PA into Max PQ  
+comparator, comparator with negation   
+
+### Adding Elements to Binary Heap  
+
+### How to Implement a Priority Queue  
+Priority queues are usually implemented with heaps  
+- the best possible time complexity  
+- heaps are not the only way to implement PQ  
+
+Many types of heaps  
+- binary, fibonacci, binomial, pairing heap  
+
+A binary heap is a binary tree that supports the heap invariant.  
+- every node has exactly two children  
+
+A complete binary tree is a tree  
+in which at every level except the last is completely filled   
+and all the nodes are as far left as possible.  
+
+### Removing Elements From Binary Heap in O(log(n))  
+The inefficiency comes from performing a linear search   
+to find out where an element is indexed at.  
+=> What if using a Hashtable to find out where a node is indexed at?  
+
+Multiple value problem : one value to multiple positions  
+- Use a Set or Tree Set of indexes for which a value maps to  
