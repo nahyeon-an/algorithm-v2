@@ -117,7 +117,9 @@ Binary Heap
 - construction : O(n)  
 
 ### Turning Min PA into Max PQ  
-comparator, comparator with negation   
+comparator  
+If programming languages only provide a min PQ, how can we acheive a max PQ?   
+Simply, negate values  
 
 ### Adding Elements to Binary Heap  
 
