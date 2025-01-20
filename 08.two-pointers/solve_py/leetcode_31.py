@@ -29,11 +29,14 @@ def next_permutation(nums: list[int]):
         j += 1
 
     # 3. swap
-    tmp_val = nums[pivot]
-    nums[pivot] = nums[swap_point]
-    nums[swap_point] = tmp_val
+    if pivot > -1:
+        tmp_val = nums[pivot]
+        nums[pivot] = nums[swap_point]
+        nums[swap_point] = tmp_val
 
     # 4. pivot + 1 부터 오름차순 정렬
     nums[pivot+1:] = sorted(nums[pivot+1:])
+
+    print(nums)
 
     # return nums
