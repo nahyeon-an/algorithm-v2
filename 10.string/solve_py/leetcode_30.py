@@ -65,7 +65,7 @@ def slow_solve(s, words):
 
 def find_substring(s, words):
     """
-    time complexity ?
+    time complexity ? len(s) * len(words) * len(words[0])
     """
 
     word_size = len(words[0])
