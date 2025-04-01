@@ -34,19 +34,17 @@ def solve(p: Optional[TreeNode], q: Optional[TreeNode]):
         if n1.val != n2.val:
             return False
 
-        if n1.left is not None and n2.left is not None:
-            queue.append([n1.left, n2.left])
-        elif n1.left is None and n2.left is None:
-            pass
-        else:
+        # 왼쪽 서브트리 비교
+        if (n1.left and not n2.left) or (not n1.left and n2.left):
             return False
+        if n1.left and n2.left:
+            queue.append((n1.left, n2.left))
 
-        if n1.right is not None and n2.right is not None:
-            queue.append([n1.right, n2.right])
-        elif n1.right is None and n2.right is None:
-            pass
-        else:
+        # 오른쪽 서브트리 비교
+        if (n1.right and not n2.right) or (not n1.right and n2.right):
             return False
+        if n1.right and n2.right:
+            queue.append((n1.right, n2.right))
 
     return True
 
