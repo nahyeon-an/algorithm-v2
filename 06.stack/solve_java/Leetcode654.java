@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Stack;
 
 
 public class Leetcode654 {
@@ -23,6 +24,31 @@ public class Leetcode654 {
         public String toString() {
             return String.format("TreeNode(val=%d, left=%s, right=%s)", val, left, right);
         }
+    }
+
+    public TreeNode constructMaximumBinaryTreeWithStack(int[] nums) {
+        /**
+         * 1. 모든 숫자를 처음부터 순회
+         * 2. stack.peek < n 일 때, n.left = stack.pop
+         * 3. if stack is not empty, stack.peek.right = n
+         */
+        Stack<TreeNode> stack = new Stack<>();
+
+        for (int num : nums) {
+            TreeNode node = new TreeNode(num);
+
+            while (!stack.isEmpty() && stack.peek().val < num) {
+                node.left = stack.pop();
+            }
+
+            if (!stack.isEmpty()) {
+                stack.peek().right = node;
+            }
+
+            stack.push(node);
+        }
+
+        return stack.getFirst();
     }
 
     public TreeNode constructMaximumBinaryTree(int[] nums) {
@@ -70,5 +96,6 @@ public class Leetcode654 {
 
         int[] nums = {3,2,1,6,0,5};
         System.out.println(app.constructMaximumBinaryTree(nums));
+        System.out.println(app.constructMaximumBinaryTreeWithStack(nums));
     }
 }
