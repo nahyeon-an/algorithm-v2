@@ -30,6 +30,32 @@ public class Leetcode133 {
         }
     }
 
+    public Node refactoringCloneGraph(Node node) {
+        if (node == null) return null;
+
+        Map<Node, Node> nodeMap = new HashMap<>();
+        Queue<Node> queue = new LinkedList<>();
+
+        Node cloneStart = new Node(node.val);
+        nodeMap.put(node, cloneStart);
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+
+            for (Node neighbor : current.neighbors) {
+                if (!nodeMap.containsKey(neighbor)) {
+                    nodeMap.put(neighbor, new Node(neighbor.val));
+                    queue.add(neighbor);
+                }
+
+                nodeMap.get(current).neighbors.add(nodeMap.get(neighbor));
+            }
+        }
+
+        return nodeMap.get(node);
+    }
+
     public Node cloneGraph(Node node) {
         if (node == null) {
             return null;

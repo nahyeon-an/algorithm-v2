@@ -22,13 +22,6 @@ public class Leetcode547 {
         }
     }
 
-    public int find(int[] parent, int x, int y) {
-        int parentX = getParent(parent, x);
-        int parentY = getParent(parent, y);
-        if (parentX == parentY) return 1;
-        else return 0;
-    }
-
     public int findCircleNum(int[][] isConnected) {
         int n = isConnected.length; // 노드 개수
         Queue<Integer> queue = new LinkedList<>();
