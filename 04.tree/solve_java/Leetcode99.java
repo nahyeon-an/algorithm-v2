@@ -1,6 +1,8 @@
 import java.util.Stack;
 
 public class Leetcode99 {
+    public TreeNode prev, firstMismatched, secondMismatched;
+
     public static class TreeNode {
         int val;
         TreeNode left;
@@ -32,7 +34,23 @@ public class Leetcode99 {
         }
     }
 
-    public void recoverTree(TreeNode root) {
+    public void inOrderTree(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+
+        inOrderTree(node.left);
+        if (prev != null && prev.val > node.val) {
+            if (firstMismatched == null) {
+                firstMismatched = prev;
+            }
+            secondMismatched = node;
+        }
+        prev = node;
+        inOrderTree(node.right);
+    }
+
+    public void bruteForce(TreeNode root) {
         boolean isChanged = false;
         Stack<TreeNode> stack = new Stack<>();
 
@@ -81,6 +99,14 @@ public class Leetcode99 {
         if (root.right != null) {
             recoverTree(root.right);
         }
+    }
+
+    public void recoverTree(TreeNode root) {
+        inOrderTree(root);
+        // swap two mis-matched nodes
+        int temp = firstMismatched.val;
+        firstMismatched.val = secondMismatched.val;
+        secondMismatched.val = temp;
     }
 
     public static void main(String[] args) {
