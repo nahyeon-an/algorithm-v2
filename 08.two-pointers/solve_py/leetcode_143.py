@@ -10,67 +10,64 @@ class ListNode:
         return f"ListNode(val={self.val}, next={self.next})"
 
 
+def find_middle(head):
+    if not head or not head.next:
+        return None
+
+    slow, fast = head, head
+    prev = None
+
+    while fast and fast.next:
+        prev = slow
+        slow = slow.next  # 1개의 노드를 움직임
+        fast = fast.next.next  # 2개의 노드를 움직임
+
+    if prev:
+        prev.next = None
+
+    return slow
+
+
+def reverse(head):
+    prev = None
+    while head:
+        next_node = head.next
+        head.next = prev
+        prev = head
+        head = next_node
+    return prev
+
+
+def merge(node1, node2):
+    while node1 and node2:
+        n1_next = node1.next
+        n2_next = node2.next
+
+        node1.next = node2
+        if not n1_next:
+            break
+        node2.next = n1_next
+
+        node1 = n1_next
+        node2 = n2_next
+
+
 def solve(head: Optional[ListNode]):
     """
     head 의 노드와 tail 의 노드를 번갈아 가며 reorder
     """
     # 1. find middle node
-    cur = head
-    cnt = 0
-
-    while cur:
-        cur = cur.next
-        cnt += 1
-
-    if cnt <= 1:
+    mid = find_middle(head)
+    if not mid:
         return
 
-    # divide
-    left_tail = None
-    mid = head
-    for _ in range(cnt // 2):
-        left_tail = mid
-        mid = mid.next
+    # 2. reverse
+    right = reverse(mid)
 
-    if left_tail:
-        left_tail.next = None
+    # 3. merge
+    merge(head, right)
 
-    #  reverse
-    stack = []
-
-    while mid:
-        stack.append(mid)
-        mid = mid.next
-
-    right = stack[-1]
-    while stack:
-        tmp = stack.pop()
-        if stack:
-            tmp.next = stack[-1]
-        else:
-            tmp.next = None
-
-    # merge
-    prev_right = None
-    left = head
-    while left and right:
-        tmp = left.next
-        left.next = right
-        left = tmp
-
-        prev_right = right
-        tmp = right.next
-        right.next = left
-        right = tmp
-
-    if right:
-        prev_right.next = right
-
-    cur = head
-    print(cur)
-    # while cur:
-    #     print(cur)
-    #     cur = cur.next
+    print(head)
 
 
 if __name__ == '__main__':
